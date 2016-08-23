@@ -41,10 +41,12 @@
                             <span class="badge">{{dtlController.dish.price | currency}}</span>
                         </h2>
                         <p>{{dtlController.dish.description}}</p>
-
+                    </div>
+                    <div class="col-xs-11 col-xs-push-1">
+                        <p style="padding-top: 10px"> Order By: <input type="text" ng-model="dtlController.filter"></p>
                     </div>
                     <div class="col-xs-9 col-xs-offset-1">
-                        <blockquote ng-repeat="comment in dtlController.dish.comments">
+                        <blockquote ng-repeat="comment in dtlController.dish.comments | orderBy: dtlController.filter">
                             <p>Rating: {{comment.rating}}</p>
                             <p>{{comment.comment}}</p>
                             <footer>{{comment.author}} {{comment.date | date}}</footer>
@@ -60,7 +62,7 @@
         var app = angular.module('confusionApp',[]);
         
         app.controller('dishDetailController', function() {
-
+            var filter = '';
             var dish={
                           name:'Uthapizza',
                           image: 'images/uthapizza.png',
