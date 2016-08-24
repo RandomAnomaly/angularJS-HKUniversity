@@ -109,9 +109,9 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
 
   .controller('RatingController', ['$scope', function ($scope) {
     var rating = {
-      name: "temp",
+      name: "",
       rating: 5,
-      comment: "temp"
+      comment: ""
     };
     $scope.rating = rating;
   }])
