@@ -25,7 +25,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="row row-content" ng-controller="MenuController">
             <div class="col-xs-12">
@@ -45,7 +44,6 @@
 
                         <li role="presentation" ng-class="{active:isSelected(4)}">
                             <a ng-click="select(4)" aria-controls="desserts" role="tab">Desserts</a></li>
-
                     </ul>
                 </div>
                 <ul class="media-list">
@@ -61,18 +59,16 @@
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
                             <p ng-show="showDetails">{{dish.description}}</p>
-
+                        </div>
                     </li>
-                    </div>
-
             </div>
         </div>
     </div>
 
-<!-- build:js scripts/main.js -->
-  <script src="../bower_components/angular/angular.min.js"></script>
-  <script src="scripts/app.js"></script>
-<!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
 
 </body>
 
