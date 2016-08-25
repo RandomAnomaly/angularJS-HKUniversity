@@ -28,7 +28,6 @@
     <div class="container">
         <div class="row row-content" ng-controller="dishDetailController as dtlController">
             <div class="col-xs-12">
-
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
@@ -52,55 +51,61 @@
                             <footer>{{comment.author}} {{comment.date | date}}</footer>
                         </blockquote>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
-        <div class="row row-content" ng-controller="RatingController">
-            <form class="form-horizontal" name="ratingForm" ng-submit="sendRating()" novalidate>
-                <div class="form-group" ng-class="{ 'has-error' : ratingForm.name.$error.required && ! ratingForm.name.$pristine }">
-                    <label for="name" class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" ng-model="rating.name" required>
-                        <span ng-show="ratingForm.name.$error.required && !ratingForm.name.$pristine" class="help-block">Your name is required.</span>
+        <div ng-controller="RatingController">
+            <div class="row" ng-show="!ratingForm.name.$error.required && !ratingForm.comment.$error.required">
+                <div class="col-xs-9 col-xs-offset-1">
+                    <blockquote>
+                        <p>Rating: {{rating.rating}}</p>
+                        <p>{{rating.comment}}</p>
+                        <footer>{{rating.name}} {{ rating.date | date}}</footer>
+                    </blockquote>
+
+                </div>
+            </div>
+
+            <div class="row row-content">
+
+                <form class="form-horizontal" name="ratingForm" ng-submit="sendRating()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : ratingForm.name.$error.required && ! ratingForm.name.$pristine }">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" ng-model="rating.name" required>
+                            <span ng-show="ratingForm.name.$error.required && !ratingForm.name.$pristine" class="help-block">Your name is required.</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="ratingRadios" class="col-sm-2 control-label">Rating</label>
-                    <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=5 checked>5</label>
-                    <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=4>4</label>
-                    <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=3>3</label>
-                    <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=2>2</label>
-                    <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=1>1</label>
-                </div>
-
-                <div class="form-group" ng-class="{ 'has-error' : ratingForm.comment.$error.required && ! ratingForm.comment.$pristine }">
-                    <label for="comment" class="col-sm-2 control-label">Comment</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" id="comment" name="comment" rows="12" placeholder="Enter Comment" ng-model="rating.comment" required></textarea>
-                        <span ng-show="ratingForm.comment.$error.required && !ratingForm.comment.$pristine" class="help-block">Your comment is required.</span>
+                    <div class="form-group">
+                        <label for="ratingRadios" class="col-sm-2 control-label">Rating</label>
+                        <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=5 checked>5</label>
+                        <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=4>4</label>
+                        <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=3>3</label>
+                        <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=2>2</label>
+                        <label><input type="radio" name="ratingRadio" ng-model="rating.rating" value=1>1</label>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary pull-right" ng-disabled="ratingForm.$invalid">Submit</button>
+                    <div class="form-group" ng-class="{ 'has-error' : ratingForm.comment.$error.required && ! ratingForm.comment.$pristine }">
+                        <label for="comment" class="col-sm-2 control-label">Comment</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="comment" name="comment" rows="12" placeholder="Enter Comment" ng-model="rating.comment"
+                                required></textarea>
+                            <span ng-show="ratingForm.comment.$error.required && !ratingForm.comment.$pristine" class="help-block">Your comment is required.</span>
+                        </div>
                     </div>
-                </div>
-            </form>
 
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary pull-right" ng-disabled="ratingForm.$invalid">Submit</button>
+                        </div>
+                    </div>
 
-
-
-            <p>{{rating.name}}</p>
-            <p>{{rating.rating}}</p>
-            <p>{{rating.comment}}</p>
-
+                </form>
+            </div>
         </div>
-
-
     </div>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="scripts/app.js"></script>
