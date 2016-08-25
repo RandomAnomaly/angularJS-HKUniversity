@@ -26,26 +26,26 @@
 <body>
 
     <div class="container">
-        <div class="row row-content" ng-controller="dishDetailController as dtlController">
+        <div class="row row-content" ng-controller="dishDetailController">
             <div class="col-xs-12">
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
-                            <img class="media-object img-thumbnail" ng-src={{dtlController.dish.image}} alt="Uthapizza">
+                            <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthapizza">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dtlController.dish.name}}
-                            <span class="label label-danger">{{dtlController.dish.label}}</span>
-                            <span class="badge">{{dtlController.dish.price | currency}}</span>
+                        <h2 class="media-heading">{{dish.name}}
+                            <span class="label label-danger">{{dish.label}}</span>
+                            <span class="badge">{{dish.price | currency}}</span>
                         </h2>
-                        <p>{{dtlController.dish.description}}</p>
+                        <p>{{dish.description}}</p>
                     </div>
                     <div class="col-xs-11 col-xs-push-1">
-                        <p style="padding-top: 10px"> Order By: <input type="text" ng-model="dtlController.filter"></p>
+                        <p style="padding-top: 10px"> Order By: <input type="text" ng-model="filter"></p>
                     </div>
                     <div class="col-xs-9 col-xs-offset-1">
-                        <blockquote ng-repeat="comment in dtlController.dish.comments | orderBy: dtlController.filter">
+                        <blockquote ng-repeat="comment in dish.comments | orderBy: filter">
                             <p>Rating: {{comment.rating}}</p>
                             <p>{{comment.comment}}</p>
                             <footer>{{comment.author}} {{comment.date | date}}</footer>
@@ -62,7 +62,7 @@
                     <blockquote>
                         <p>Rating: {{rating.rating}}</p>
                         <p>{{rating.comment}}</p>
-                        <footer>{{rating.name}} {{ rating.date | date}}</footer>
+                        <footer>{{rating.name}} {{rating.date | date}}</footer>
                     </blockquote>
 
                 </div>
