@@ -106,39 +106,6 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
     }
   }])
 
-
-  .controller('RatingController', ['$scope', function ($scope) {
-    
-    var rating = {
-      name: "",
-      rating: 5,
-      comment: "",
-      date: new Date()
-    };
-    $scope.rating = rating;
-
-    var sendRating = function(){
-
-      var newRating = {
-        rating: rating.rating,
-        comment: rating.comment,
-        author: rating.name,
-        date: rating.date
-      }
-
-      rating.name = "";
-      rating.rating = 5;
-      rating.comment = "";
-      rating.date = new Date();
-
-      //set the pristines
-      $scope.ratingForm.$setPristine();
-    }
-    $scope.sendRating = sendRating;
-
-  }])
-
-
   .controller('dishDetailController', ['$scope', function ($scope) {
     var filter = '';
     var dish = {
@@ -182,6 +149,39 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
       ]
     };
 
+
+    var rating = {
+      name: "",
+      rating: 5,
+      comment: "",
+      date: new Date()
+    };
+    
+
+    var sendRating = function(){
+
+      var newRating = {
+        rating: rating.rating,
+        comment: rating.comment,
+        author: rating.name,
+        date: rating.date
+      }
+
+      rating.name = "";
+      rating.rating = 5;
+      rating.comment = "";
+      rating.date = new Date();
+
+      //set the pristines
+      $scope.ratingForm.$setPristine();
+
+      dish.comments.push(newRating);
+    }
+
+
+
+    $scope.sendRating = sendRating;
+    $scope.rating = rating;
     $scope.dish = dish;
     $scope.filter = filter;
   }]);
