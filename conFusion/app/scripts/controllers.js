@@ -66,10 +66,10 @@ angular.module('confusionApp').controller('MenuController', ['$scope', 'menuFact
     }
   }])
 
-  .controller('dishDetailController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+  .controller('dishDetailController', ['$scope', '$routeParams', 'menuFactory', function ($scope, $routeParams, menuFactory) {
     var filter = '';
     
-    var dish = menuFactory.getDish(3);
+    var dish = menuFactory.getDish(parseInt($routeParams.id,10));
 
     var rating = {
       name: "",
@@ -79,7 +79,6 @@ angular.module('confusionApp').controller('MenuController', ['$scope', 'menuFact
     };  
 
     var sendRating = function(){
-
       var newRating = {
         rating: rating.rating,
         comment: rating.comment,
